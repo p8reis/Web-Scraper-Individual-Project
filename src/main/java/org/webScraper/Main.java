@@ -35,7 +35,7 @@ public class Main {
             Elements imgLinks = getImgLinks(websiteUrl);
 
             // Initializes the file where the detections will be saved
-            String filePath = "./src/main/java/org/example/detections.csv";
+            String filePath = "./src/main/java/org/webScraper/detections.csv";
             FileWriter csvFile = new FileWriter(filePath, true);
             PrintWriter detectionsFile = new PrintWriter(csvFile);
 
@@ -101,7 +101,7 @@ public class Main {
 
         // Get user agents list from an external file
         try {
-            String filePath = "./src/main/java/org/example/userAgents.txt";
+            String filePath = "./src/main/java/org/webScraper/userAgents.txt";
             File extUserAgentLst = new File(filePath);
             Scanner usrAgentReader = new Scanner(extUserAgentLst);
             while (usrAgentReader.hasNextLine()) {
