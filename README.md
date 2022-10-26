@@ -1,7 +1,7 @@
 ## Web Scrapper
 ### Description
 
-This program scrapes the decathlon.pt website for "Jacuzzi".
+This program scrapes the [decathlon.pt](https://www.decathlon.pt/) website for "Jacuzzi".
 The data is stored in a *detections.csv* file.
 
 **The fields sraped are:**
