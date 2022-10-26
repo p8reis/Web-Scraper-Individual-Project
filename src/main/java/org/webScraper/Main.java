@@ -2,12 +2,14 @@ package org.webScraper;
 
 import java.io.*;
 
+import java.nio.Buffer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,7 +37,7 @@ public class Main {
             Elements imgLinks = getImgLinks(websiteUrl);
 
             // Initializes the file where the detections will be saved
-            String filePath = "./src/main/java/org/webScraper/detections.csv";
+            String filePath = "/Users/pedro.reis/Desktop/DetectionsOutput/Detections.csv";
             FileWriter csvFile = new FileWriter(filePath, true);
             PrintWriter detectionsFile = new PrintWriter(csvFile);
 
@@ -94,25 +96,27 @@ public class Main {
         }
     }
 
-    public static String getUserAgent() {
+    public static String getUserAgent() throws IOException {
         //  Returns a random user agent
 
         ArrayList<String> userAgentsList = new ArrayList<>();
 
         // Get user agents list from an external file
-        try {
-            String filePath = "./src/main/java/org/webScraper/userAgents.txt";
+        InputStream inStream = Main.class.getClassLoader().getResourceAsStream("userAgents.txt");
+        if (inStream != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
+            String usersTxt = reader.readLine();
+            userAgentsList.add(usersTxt);
+        }
+
+         /*   String filePath = "./src/main/resources/userAgents.txt";
             File extUserAgentLst = new File(filePath);
             Scanner usrAgentReader = new Scanner(extUserAgentLst);
             while (usrAgentReader.hasNextLine()) {
                 String userAgent = usrAgentReader.nextLine();
                 userAgentsList.add(userAgent);
             }
-            usrAgentReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            e.printStackTrace();
-        }
+            usrAgentReader.close(); */
 
         // returns a random user agent from the list
         int randomIndex = ThreadLocalRandom.current().nextInt(0, userAgentsList.size());
