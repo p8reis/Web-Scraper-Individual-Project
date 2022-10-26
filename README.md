@@ -1,6 +1,10 @@
+## Web Scrapper
+### Description
+
 This program scrapes the decathlon.pt website for "Jacuzzi".
-The data is stored in a detections.csv file.
-**The fields srapped are: **
+The data is stored in a *detections.csv* file.
+
+**The fields sraped are:**
 - product name
 - product description
 - product price
@@ -12,3 +16,6 @@ The data is stored in a detections.csv file.
 
 Additionally, every detection contains the date and the time of the scraping.
  
+### Libraries
+
+The scraping was done using *Jsoup* and *Selenium*.
