@@ -110,6 +110,7 @@
                 </executions>
             </plugin>
 
+            <!-- plugin to move the resources to the target folder, so that the program can run -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.3.0</version>
