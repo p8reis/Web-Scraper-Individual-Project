@@ -138,7 +138,7 @@ public class Main {
 
         // Using Selenium
 
-        System.setProperty("webdriver.gecko.driver", "geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/tmp/geckodriver");
         WebDriver driver = new FirefoxDriver();
         driver.get(websiteUrl);
         driver.manage().window().minimize();
