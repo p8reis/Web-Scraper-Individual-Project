@@ -35,7 +35,7 @@ public class Main {
             Elements imgLinks = getImgLinks(websiteUrl);
 
             // Initializes the file where the detections will be saved
-            String filePath = "/tmp/DetectionsOutput/Detections.csv";
+            String filePath = "/Users/pedro.reis/Desktop/DetectionsOutput/Detections.csv";
             FileWriter csvFile = new FileWriter(filePath, true);
             PrintWriter detectionsFile = new PrintWriter(csvFile);
 
@@ -137,8 +137,7 @@ public class Main {
     public static Elements getImgLinks(String websiteUrl) {
 
         // Using Selenium
-
-        System.setProperty("webdriver.gecko.driver", "/tmp/geckodriver");
+        System.setProperty("webdriver.gecko.driver","/src/main/resources/geckodriver");
         WebDriver driver = new FirefoxDriver();
         driver.get(websiteUrl);
         driver.manage().window().minimize();
