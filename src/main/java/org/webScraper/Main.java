@@ -137,7 +137,7 @@ public class Main {
     public static Elements getImgLinks(String websiteUrl) {
 
         // Using Selenium
-        System.setProperty("webdriver.gecko.driver","/src/main/resources/geckodriver");
+        System.setProperty("webdriver.gecko.driver","geckodriver");
         WebDriver driver = new FirefoxDriver();
         driver.get(websiteUrl);
         driver.manage().window().minimize();
