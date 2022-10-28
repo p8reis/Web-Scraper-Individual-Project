@@ -15,7 +15,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Main {
     public static void main(String[] args) {
@@ -138,9 +140,15 @@ public class Main {
 
         // Using Selenium
         System.setProperty("webdriver.gecko.driver","geckodriver");
-        WebDriver driver = new FirefoxDriver();
+
+        // Don't open firefox page
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setBinary(firefoxBinary);
+        options.setHeadless(true);
+
+        WebDriver driver = new FirefoxDriver(options);
         driver.get(websiteUrl);
-        driver.manage().window().minimize();
         String linksSource = driver.getPageSource();
 
         // parsing image links to treat them with Jsoup
