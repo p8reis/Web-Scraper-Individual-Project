@@ -30,7 +30,7 @@ public class Main {
 
 
             // Initializes the file where the detections will be saved
-            String filePath = "/Users/pedro.reis/Desktop/DetectionsOutput/Detections.csv";
+            String filePath = "/tmp/DetectionsOutput/Detections.csv";
             FileWriter csvFile = new FileWriter(filePath, true);
             PrintWriter detectionsFile = new PrintWriter(csvFile);
 
@@ -43,7 +43,7 @@ public class Main {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
             // Limit to the first 10 results
-            int MaxSize = (Math.min(productsBlock.size(), 20));
+            int MaxSize = (Math.min(productsBlock.size(), 10));
 
             // Getting the info
             for (int i = 0; i < MaxSize; i++) {
