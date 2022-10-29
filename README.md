@@ -4,7 +4,7 @@
 This program scrapes the [decathlon.pt](https://www.decathlon.pt/) website for "Jacuzzi".
 The data is stored in a *detections.csv* file.
 
-**The fields sraped are:**
+**The fields scraped are:**
 - product name
 - product description
 - product price
