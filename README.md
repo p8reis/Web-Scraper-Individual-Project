@@ -1,6 +1,8 @@
 ## Web Scrapper
 ### Description
 
+**Please note: This version does not run in docker. The scraper version in this branch is abandoned.**
+
 This program scrapes the [decathlon.pt](https://www.decathlon.pt/) website for "Jacuzzi".
 The data is stored in a *detections.csv* file.
 
