@@ -14,11 +14,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -33,8 +28,6 @@ public class Main {
             //getting the product prices (in the same order as the products above)
             Elements priceDiv = scrap.getElementsByClass("prc__cartridge");
 
-            // Using Selenium to capture the image links
-            Elements imgLinks = getImgLinks(websiteUrl);
 
             // Initializes the file where the detections will be saved
             String filePath = "/tmp/DetectionsOutput/Detections.csv";
@@ -62,7 +55,7 @@ public class Main {
 
                 String productDescription = getProductDescription(productUrl);
 
-                String prodImageUrl = getProductImageUrl(imgLinks.get(i));
+                String prodImageUrl = getProductImageUrl(productUrl);
 
                 // Get the currency and the price
                 ArrayList<String> prodPriceCurrency = new ArrayList<>(getPriceCurrency(priceDiv.get(i)));
@@ -136,28 +129,6 @@ public class Main {
 
     }
 
-    public static Elements getImgLinks(String websiteUrl) {
-
-        // Using Selenium
-
-        System.setProperty("webdriver.gecko.driver", "/tmp/geckodriver");
-
-        // Don't open firefox page
-        FirefoxBinary firefoxBinary = new FirefoxBinary();
-        FirefoxOptions options = new FirefoxOptions();
-        options.setBinary(firefoxBinary);
-        options.setHeadless(true);
-
-        WebDriver driver = new FirefoxDriver(options);
-        driver.get(websiteUrl);
-        String linksSource = driver.getPageSource();
-
-        // parsing image links to treat them with Jsoup
-        Document parsedHTML = Jsoup.parse(linksSource);
-
-        return parsedHTML.select(".svelte-w1lrdd");
-    }
-
     public static String getProductDescription(String url) {
 
         String prodDescription = "";
@@ -177,14 +148,18 @@ public class Main {
         return prodDescription;
     }
 
-    public static String getProductImageUrl(Element imgElement) {
+    public static String getProductImageUrl(String prodUrl) {
 
-        String imgLink = imgElement.attr("abs:src");
+        String imgLink = "";
 
-        // In some products, the image link is stored in another attribute than "src"
-        if (imgLink.startsWith("data")) {
-            imgLink = imgElement.attr("abs:data-src");
+        try {
+            String userAgent = getUserAgent();
+            Document scrap = Jsoup.connect(prodUrl).userAgent(userAgent).get();
+            imgLink = scrap.select(".svelte-w1lrdd").attr("abs:src");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
         return imgLink;
     }
