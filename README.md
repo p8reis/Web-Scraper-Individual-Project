@@ -18,4 +18,4 @@ Additionally, every detection contains the date and the time of the scraping.
  
 ### Libraries
 
-The scraping was done using *Jsoup* and *Selenium*.
+The scraping was done using *Jsoup*.
