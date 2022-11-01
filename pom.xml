@@ -12,13 +12,16 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <jsoup-version>1.15.3</jsoup-version>
+        <resources-plugin-version>3.3.0</resources-plugin-version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.15.3</version>
+            <version>${jsoup-version}</version>
         </dependency>
 
         <dependency>
@@ -38,7 +41,7 @@
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>
-            <version>3.3.0</version>
+            <version>${resources-plugin-version}</version>
             <type>maven-plugin</type>
         </dependency>
 
